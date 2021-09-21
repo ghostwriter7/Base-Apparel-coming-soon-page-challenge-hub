@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap");
+
+// VARIABLES
+$primary-desaturated-red: hsl(0, 36%, 70%);
+$primary-soft-red: hsl(0, 93%, 68%);
+$neutral-grayish: hsl(0, 6%, 24%);
+$gradient-01: 135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%);
+$gradient-02: 135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 15px;
+  background: linear-gradient($gradient-01);
+  position: relative;
+}
+
+main {
+  margin-inline: auto;
+  width: min(100%, 1440px);
+
+  .header {
+    margin: min(5vw, 5rem) min(12vw, 15rem);
+
+    img {
+      height: min(7vw, 30px);
+    }
+  }
+  .hero-image {
+    img {
+      width: 100%;
+    }
+  }
+  .content {
+    text-align: center;
+    padding: 2rem 1rem;
+    width: min(100%, 400px);
+    margin-inline: auto;
+    h1 {
+      font-size: min(7vw, 60px);
+      text-transform: uppercase;
+      font-weight: 200;
+      color: $primary-desaturated-red;
+      letter-spacing: min(3vw, 10px);
+      line-height: min(10vw, 65px);
+      margin-block: 2rem 1rem;
+    }
+    span {
+      font-weight: 600;
+      color: $neutral-grayish;
+    }
+    p {
+      line-height: 2em;
+      color: $primary-desaturated-red;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+    form {
+      position: relative;
+      .form-controls {
+        margin-block: 1.5rem;
+        position: relative;
+        &.error {
+          color: $primary-soft-red;
+          input {
+            border: 1px solid $primary-soft-red;
+            color: inherit;
+          }
+          i.fa-exclamation-circle {
+            display: block;
+          }
+          small {
+            display: block;
+            position: absolute;
+            top: 115%;
+            left: 1.5rem;
+          }
+        }
+        &.success {
+          color: lightgreen;
+          input {
+            border: 1px solid lightgreen;
+            color: inherit;
+          }
+          i.fa-check-circle {
+            display: block;
+          }
+        }
+        input {
+          width: 100%;
+          font-family: inherit;
+          padding: 1rem 2rem;
+          border-radius: 3rem;
+          border: 1px solid $primary-desaturated-red;
+          color: $primary-desaturated-red;
+          outline: none;
+        }
+        input::placeholder {
+          color: inherit;
+        }
+        i {
+          display: none;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 6rem;
+        }
+        small {
+          display: none;
+        }
+      }
+      button {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        padding-inline: min(15vw, 2.3rem);
+        border-radius: 3rem;
+        border: 0;
+        background: linear-gradient($gradient-02);
+        box-shadow: 0px 10px 15px hsla(0, 36%, 70%, 0.5);
+        color: #fff;
+        font-size: 1.1rem;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  body {
+    overflow-y: hidden;
+  }
+  main {
+    background-image: url("images/bg-pattern-desktop.svg");
+    background-position: top left;
+    background-size: 60% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+      "logo hero"
+      "content hero"
+      ". hero";
+    grid-template-columns: 3fr 2fr;
+
+    .header {
+      grid-area: logo;
+    }
+    .hero-image {
+      grid-area: hero;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .content {
+      grid-area: content;
+      text-align: left;
+      margin-inline: min(12vw, 15rem);
+      padding: 0;
+    }
+  }
+}
